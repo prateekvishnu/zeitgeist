@@ -1,0 +1,36 @@
+# Build Stage
+FROM ubuntu:20.04 as builder
+
+## Install build dependencies.
+RUN apt-get update && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y cmake clang curl
+RUN curl --proto "=https" --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+RUN ${HOME}/.cargo/bin/rustup default nightly
+RUN ${HOME}/.cargo/bin/cargo install -f cargo-fuzz
+
+## Add source code to the build stage.
+ADD . /zeitgeist
+WORKDIR /zeitgeist
+
+RUN cd zrml/rikiddo/fuzz && ${HOME}/.cargo/bin/cargo fuzz build
+
+# Package Stage
+FROM ubuntu:20.04
+
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/balance_to_fixedu_conversion /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/ema_market_volume_estimate_ema /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/ema_market_volume_first_state /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/ema_market_volume_second_state /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/ema_market_volume_third_state /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/fee_sigmoid /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/fixedi_to_fixedu_conversion /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/fixedu_to_balance_conversion /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/fixedu_to_fixedi_conversion /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/rikiddo_pallet /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/rikiddo_with_calculated_fee /
+COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/rikiddo_with_initial_fee /
+
+
+
+
+
