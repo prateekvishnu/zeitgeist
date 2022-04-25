@@ -1,11 +1,11 @@
 # Namespaced project name that the target belongs to
-project: stronghold.rs
+project: zeitgeist
 
 # Target name (should be unique within the project)
-target: stronghold.rs
+target: zeitgeist
 
 # Base image to run the binary in.
-image: ghcr.io/prateekvishnu/stronghold.rs:latest
+image: ghcr.io/prateekvishnu/zeitgeist:latest
 
 # List of commands used to test the target
 cmds:
