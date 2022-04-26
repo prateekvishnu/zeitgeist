@@ -18,7 +18,6 @@ RUN cd zrml/rikiddo/fuzz && ${HOME}/.cargo/bin/cargo fuzz build
 FROM ubuntu:20.04
 
 COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/balance_to_fixedu_conversion /
-COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/ema_market_volume_estimate_ema /
 COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/ema_market_volume_first_state /
 COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/ema_market_volume_second_state /
 COPY --from=builder zeitgeist/target/x86_64-unknown-linux-gnu/release/ema_market_volume_third_state /
