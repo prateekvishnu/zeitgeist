@@ -12,14 +12,5 @@ cmds:
 
     # Command used to start the target, "@@" is the input file
     # (when "@@" is omitted Mayhem defaults to stdin inputs)
-    - cmd: /balance_to_fixedu_conversion 
-    - cmd: /ema_market_volume_first_state
     - cmd: /ema_market_volume_second_state
-    - cmd: /ema_market_volume_third_state
-#    - cmd: /fee_sigmoid
-#    - cmd: /fixedi_to_fixedu_conversion
-#    - cmd: /fixedu_to_balance_conversion
-#    - cmd: /fixedu_to_fixedi_conversion
-#    - cmd: /rikiddo_pallet
-#    - cmd: /rikiddo_with_calculated_fee
-#    - cmd: /rikiddo_with_initial_fee
+

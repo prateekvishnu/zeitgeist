@@ -7,6 +7,17 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
+  balance_to_fixedu_conversion_MAYHEMFILE: balance_to_fixedu_conversion .mayhemfile 
+  ema_market_volume_first_state_MAYHEMFILE: ema_market_volume_first_state.mayhemfile 
+  ema_market_volume_second_state_MAYHEMFILE: ema_market_volume_second_state.mayhemfile 
+  ema_market_volume_third_state_MAYHEMFILE: ema_market_volume_third_state.mayhemfile 
+  fee_sigmoid_MAYHEMFILE: fee_sigmoid.mayhemfile 
+  fixedi_to_fixedu_conversion_MAYHEMFILE: fixedi_to_fixedu_conversion.mayhemfile 
+  fixedu_to_balance_conversion_MAYHEMFILE: fixedu_to_balance_conversion.mayhemfile 
+  fixedu_to_fixedi_conversion_MAYHEMFILE: fixedu_to_fixedi_conversion.mayhemfile 
+  rikiddo_pallet_MAYHEMFILE: rikiddo_pallet.mayhemfile 
+  rikiddo_with_calculated_fee_MAYHEMFILE: rikiddo_with_calculated_fee.mayhemfile 
+  rikiddo_with_initial_fee_MAYHEMFILE: rikiddo_with_initial_fee.mayhemfile 
 
 jobs:
   build:
