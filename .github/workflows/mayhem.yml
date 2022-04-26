@@ -7,7 +7,7 @@ on:
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
-  balance_to_fixedu_conversion_MAYHEMFILE: balance_to_fixedu_conversion .mayhemfile 
+  balance_to_fixedu_conversion_MAYHEMFILE: balance_to_fixedu_conversion.mayhemfile 
   ema_market_volume_first_state_MAYHEMFILE: ema_market_volume_first_state.mayhemfile 
   ema_market_volume_second_state_MAYHEMFILE: ema_market_volume_second_state.mayhemfile 
   ema_market_volume_third_state_MAYHEMFILE: ema_market_volume_third_state.mayhemfile 
@@ -55,7 +55,7 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-	  file: Dockerfile_fuzz
+          file: Dockerfile_fuzz
 
       - name: Start analysis
         uses: ForAllSecure/mcode-action@v1
