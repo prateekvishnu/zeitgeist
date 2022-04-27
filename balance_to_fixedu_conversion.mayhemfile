@@ -5,7 +5,7 @@ project: zeitgeist
 target: zeitgeist
 
 # Base image to run the binary in.
-image: ghcr.io/prateekvishnu/zeitgeist:latest
+# image: ghcr.io/prateekvishnu/zeitgeist:latest
 
 # List of commands used to test the target
 cmds:
